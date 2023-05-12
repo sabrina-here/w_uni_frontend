@@ -1,0 +1,10 @@
+.navbar {
+  /* background: linear-gradient(to bottom right, #6c1dff, #af30ff); */
+  box-shadow: 0 0 17px 0px #6c1dff;
+}
+.text-purple {
+  color: #6c1dff;
+}
+.border-purple {
+  border-color: #6c1dff;
+}

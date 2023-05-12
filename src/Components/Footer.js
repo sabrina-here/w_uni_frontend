@@ -12,69 +12,19 @@ function Footer() {
   return (
     <div className="total-footer bg-black text-white">
       <div className="footer ">
-        <div className="m-2">
-          <h4>About Store</h4>
-          <hr className="border border-2 bg-white" />
-          <div className="d-flex align-items-center p-4">
-            <div>
-              <FaMapPin className="icon m-2" />
-            </div>
-            <div>
-              <p>MachBazar, Shortoli</p>
-              <p>Road No-13, Block-C,</p>
-              <p>Machbazar, Cox's Bazar</p>
-              <p>1500 Chittagong Hilltrack</p>
-              <p>Chittagong, Bangladesh</p>
-            </div>
-          </div>
-          <div className="d-flex align-items-center p-4">
-            <div>
-              <FaMailBulk className="icon m-2" />
-            </div>
-            <div>
-              <p>info@machbazar.com.bd</p>
-            </div>
-          </div>
-        </div>
-
         {/* ------------------------------our services section----------------------------------- */}
         <div className="m-2">
           <h4>Our Services</h4>
-          <hr className="border border-2 bg-white" />
-          <div className="d-flex align-items-center p-4">
+          <hr className="border border-2 bg-white " />
+          <div className="d-flex align-items-center justify-content-center">
             <div>
               <p>Home</p>
-              <p>Shop</p>
-              <p>Orders</p>
-              <p>Shopping Cart</p>
-              <p>WishList</p>
-            </div>
-          </div>
-          <div className="d-flex align-items-center p-4">
-            <div className="icon m-2"></div>
-            <div>
-              <p className="text-black">something unimportant</p>
-            </div>
-          </div>
-        </div>
-
-        {/* --------------------------------Information section---------------------------------- */}
-        <div className="m-2">
-          <h4>Our Services</h4>
-          <hr className="border border-2 bg-white" />
-          <div className="d-flex align-items-center p-4">
-            <div>
+              <p>Universities</p>
               <p>About Us</p>
-              <p>Bengal Fish Online Shop</p>
               <p>Privacy Policy</p>
-              <p>Shipping and Replacement</p>
-              <p>Terms & Services</p>
+              <p>Terms & Conditions</p>
               <p>Contact Us</p>
             </div>
-          </div>
-          <div className="d-flex align-items-center p-4">
-            <div className="icon "></div>
-            <div></div>
           </div>
         </div>
 
@@ -93,13 +43,23 @@ function Footer() {
               <FaYoutubeSquare className="icon m-2" />
             </div>
           </div>
+          <div className="d-flex align-items-center ">
+            <div className="d-flex align-items-center">
+              <div>
+                <FaMailBulk className="icon m-2" />
+              </div>
+              <div>
+                <p>info@worlduniversities.com.bd</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* ---------------------------------------ending of footer------------------------------- */}
       <div>
-        <hr className="border border-2 bg-white" />
-        <p className="p-4 ms-4 ">2022 Company . Inc . Privacy . Terms</p>
+        <hr className="border border-2 bg-white m-0" />
+        <p className="p-2 ms-4 ">2022 Company . Inc . Privacy . Terms</p>
       </div>
     </div>
   );
