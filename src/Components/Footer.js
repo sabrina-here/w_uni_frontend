@@ -57,8 +57,8 @@ function Footer() {
       </div>
 
       {/* ---------------------------------------ending of footer------------------------------- */}
-      <div>
-        <hr className="border border-2 bg-white m-0" />
+      <div className="pb-2">
+        <hr className="border border-2 bg-white m-2" />
         <p className="p-2 ms-4 ">2022 Company . Inc . Privacy . Terms</p>
       </div>
     </div>

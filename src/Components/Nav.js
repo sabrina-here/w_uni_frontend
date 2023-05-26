@@ -43,6 +43,16 @@ function Nav() {
                   Universities
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/apiPage" className="nav-link" href="#">
+                  API
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/apiSetup" className="nav-link" href="#">
+                  Api Setup
+                </Link>
+              </li>
             </ul>
             <form className="d-flex" role="search">
               <input

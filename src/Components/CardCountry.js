@@ -1,67 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Styles/CardCountry.css";
 import { Link } from "react-router-dom";
+import CardModal from "./CardModal";
+import { CountryInfoContext } from "./CountryContext";
 
 function CardCountry({ country }) {
   const [uniNum, setUniNum] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
+  const { setCurrentCountry } = useContext(CountryInfoContext);
   // console.log(country);
-  const { languages } = country;
-  const languageKeys = Object.keys(languages);
-  const languageKey = languageKeys[0];
+
   const getUniNum = () => {
     fetch(`http://localhost:5000/numOfUniversities/${country.name.common}`)
       .then((res) => res.json())
-      .then((data) => setUniNum(data))
+      .then((data) => {
+        setUniNum(data);
+        setModalShow(true);
+        settingCurrentCountry(country);
+      })
       .catch((e) => console.error(e));
+  };
+  const settingCurrentCountry = () => {
+    setCurrentCountry(country);
   };
   return (
     <>
-      <div className="modal fade" id="exampleModal">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Modal title</h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <p>Country: {country.name.common}</p>
-              <p>Total number of universities: {uniNum}</p>
-              <p>Continent: {country.continents}</p>
-              <p>Capital: {country.capital}</p>
-              <p>Population: {country.population}</p>
-              <p>language: {languages[languageKey]}</p>
-            </div>
-
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn border-purple"
-                data-bs-dismiss="modal"
-              >
-                <Link
-                  className="text-decoration-none text-black"
-                  to={`/unipage/${country.name.common}`}
-                >
-                  {" "}
-                  View Universities
-                </Link>
-              </button>
-              <button
-                type="button"
-                className="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CardModal
+        country={country}
+        uniNum={uniNum}
+        modalShow={modalShow}
+        setModalShow={setModalShow}
+      ></CardModal>
       <div className="mx-4 my-3">
         <div
           className="card mb-3"
@@ -84,14 +53,12 @@ function CardCountry({ country }) {
                   <Link
                     to={`/uniPage/${country.name.common}`}
                     className="text-decoration-none text-purple view-btn d-block"
+                    onClick={settingCurrentCountry}
                   >
                     View Universities
                   </Link>
                   <Link
-                    // to={`/modal/${country.name.common}`}
-                    className="text-decoration-none text-purple view-btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    className="text-decoration-none text-purple view-btn card-text "
                     onClick={getUniNum}
                   >
                     View details

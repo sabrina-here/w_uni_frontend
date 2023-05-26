@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import UniCard from "./UniCard";
 import Pagination from "./Pagination";
 import "../Styles/UniPage.css";
+import DisplayCountryInfo from "./DisplayCountryInfo";
+import { CountryInfoContext } from "./CountryContext";
 
 function UniPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(15);
-  const [countryInfo, setCountryInfo] = useState({});
-  const universities = useLoaderData();
-  console.log(universities);
+  const { currentCountry } = useContext(CountryInfoContext);
+  const [universities] = useState(useLoaderData());
+  const countryName = universities[0].country;
 
   // ------------ getting current cards ---------------
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -25,20 +27,12 @@ function UniPage() {
   };
   const handlePrevPaginate = () => setCurrentPage(currentPage - 1);
 
-  useEffect(() => {
-    const countryName = universities[0].country;
-    fetch(`http://localhost:5000/country/${countryName}`)
-      .then((res) => res.json())
-      .then((data) => setCountryInfo(data));
-  }, []);
-
   return (
     <>
-      <div className="container country-info border mt-5">
-        <div className="m-4 border">
-          <h4 className="fw-bold">Country: {countryInfo.name.common}</h4>
-        </div>
-      </div>
+      <DisplayCountryInfo
+        countryName={countryName}
+        countryInfo={currentCountry}
+      ></DisplayCountryInfo>
       <div>
         <div className="card-grid container mt-5 ps-5">
           {currentCards.map((uni) => (

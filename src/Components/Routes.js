@@ -1,9 +1,10 @@
 import Main from "./Main";
 import Home from "./Home";
 import UniPage from "./UniPage";
-import Modal from "./Modal";
 import AllUnis from "./AllUnis";
 import SearchedUnis from "./SearchedUnis";
+import ApiSetUp from "./ApiSetUp";
+import ApiPage from "./ApiPage";
 const { createBrowserRouter } = require("react-router-dom");
 
 const router = createBrowserRouter([
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
       {
         path: "/uniPage/:name",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/universities/${params.name}`),
+          fetch(
+            `http://localhost:5000/universities/countryName=${params.name}`
+          ),
         element: <UniPage></UniPage>,
       },
       {
@@ -27,16 +30,19 @@ const router = createBrowserRouter([
           fetch(`http://universities.hipolabs.com/search?name=${params.name}`),
         element: <SearchedUnis></SearchedUnis>,
       },
-      {
-        path: "/modal/:name",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/numOfUniversities/${params.name}`),
-        element: <Modal></Modal>,
-      },
+
       {
         path: "/allUnis",
         loader: () => fetch(`http://localhost:5000/allUniversities`),
         element: <AllUnis></AllUnis>,
+      },
+      {
+        path: "/apiSetup",
+        element: <ApiSetUp></ApiSetUp>,
+      },
+      {
+        path: "/apiPage",
+        element: <ApiPage></ApiPage>,
       },
     ],
   },
