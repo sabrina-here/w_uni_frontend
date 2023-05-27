@@ -5,13 +5,19 @@ import { FaCopy } from "react-icons/fa";
 function CopyText({ text }) {
   return (
     <div
-      className="border border-3 rounded my-3 d-flex justify-content-between align-items-center container"
+      className="border border-3 rounded mb-3 mt-1 d-flex justify-content-between align-items-center container"
       style={{ width: "445px", height: "50px", backgroundColor: "#F8F0E3" }}
     >
       <div>{text}</div>
+
       <CopyToClipboard text={text}>
-        {/* <button>Copy</button> */}
-        <FaCopy></FaCopy>
+        <button className="btn">
+          <FaCopy
+            style={{ cursor: "pointer" }}
+            onMouseOver={(e) => (e.currentTarget.style.color = "blue")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "")}
+          />
+        </button>
       </CopyToClipboard>
     </div>
   );
